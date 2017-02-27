@@ -4,6 +4,12 @@ resources:
   source:
     uri: https://github.com/gaumire/flight-school
     branch: master
+- name: flight-school-heroku
+  type: git
+  source:
+    uri: https://git.heroku.com/flight-school-ci.git
+    branch: master
+    private_key: {{private_key_heroku}}
 
 jobs:
 - name: test-app
@@ -11,4 +17,5 @@ jobs:
   - get: flight-school
     trigger: true
   - task: tests
-    file: flight-school/build.ml
+    file: flight-school/build.yml
+  - put: flight-school-heroku
