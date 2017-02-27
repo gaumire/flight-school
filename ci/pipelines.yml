@@ -7,7 +7,7 @@ resources:
 - name: flight-school-heroku
   type: git
   source:
-    uri: https://git.heroku.com/flight-school-ci.git
+    uri: ssh://git@heroku.com/flight-school-ci.git
     branch: master
     private_key: {{private_key_heroku}}
 
@@ -19,3 +19,4 @@ jobs:
   - task: tests
     file: flight-school/build.yml
   - put: flight-school-heroku
+    params: {repository: flight-school}
